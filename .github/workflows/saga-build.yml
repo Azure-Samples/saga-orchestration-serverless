@@ -1,4 +1,4 @@
-name: .NET Core
+name: Saga orchestration build
 
 on:
   push:
@@ -15,12 +15,17 @@ jobs:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
-      working-directory: "./src"
       with:
         dotnet-version: 3.1.101
+        
     - name: Install dependencies
+      working-directory: ./src
       run: dotnet restore
+
     - name: Build
+      working-directory: ./src
       run: dotnet build --configuration Release --no-restore
+    
     - name: Test
+      working-directory: ./src
       run: dotnet test --no-restore --verbosity normal
