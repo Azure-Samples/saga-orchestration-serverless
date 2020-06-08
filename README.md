@@ -40,7 +40,7 @@ These other uses cases have similar design patterns:
 
 ## Architecture
 
-![Architecture Overview](./img/architecture-overview.jpg)
+![Architecture Overview](./docs/img/architecture-overview.jpg)
 
 ### Components
 
@@ -79,6 +79,7 @@ Check the [Workflows](./docs/workflows.md) section with detailed information abo
 ### Alternatives & Considerations
 
 Check the [Alternatives & Considerations](./docs/alternatives-and-considerations.md) section to get more information about implementation alternatives, considerations around design decisions and known limitations.
+
 ## Maturity Level
 
 These are the top skills required for Solution Architects and Developer Leads that will reuse the proposed solution or parts of the implementation as reference:
@@ -89,18 +90,20 @@ These are the top skills required for Solution Architects and Developer Leads th
 * **Programming Language:** C#
 * **Additional concepts:** Infrastructure as Code, RESTful APIs, idempotency
   
-## Repository Structure (TODO)
+## Repository Structure
 
 Outline the file contents of the repository. It helps users navigate the codebase, build configuration and any related assets.
 
 | File/folder       | Description                                |
 |-------------------|--------------------------------------------|
-| `src`             | Sample source code.                        |
-| `.gitignore`      | Define what to ignore at commit time.      |
-| `CHANGELOG.md`    | List of changes to the sample.             |
-| `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
-| `README.md`       | This README file.                          |
-| `LICENSE`         | The license for the sample.                |
+| `docs`             | Contains the project docs and images                        |
+| `src`             | Contains the sample source code                       |
+| `.gitignore`      | Defines what files to be igored at commit time      |
+| `CODE_OF_CONDUCT.md`         | Microsoft Open Source Code of Conduct                |
+| `CONTRIBUTING.md` | Guidelines for contributing to the sample |
+| `LICENSE`         | The license defined for the sample               |
+| `README.md`       | Project wiki                          |
+| `SECURITY`         | Security guidelines for the sample                |
 
 The `src` folder contains a set of .NET Core solutions:
 
@@ -156,7 +159,7 @@ func host start
 
 The solution provides a Swagger UI on `http://localhost:<port>/api/swagger/ui`. 
 
-![Swagger UI](./img/swagger-ui.jpg)
+![Swagger UI](./docs/img/swagger-ui.jpg)
 
 You can start a new HTTP request on `/api/saga/start` route by providing the following json as part of the body content:
 
@@ -170,7 +173,7 @@ You can start a new HTTP request on `/api/saga/start` route by providing the fol
 
 After executing the request, it's expected to receive the transaction ID as part of the HTTP response.
 
-![Saga Starter request](./img/swagger-saga-starter.jpg)
+![Saga Starter request](./docs/img/swagger-saga-starter.jpg)
 
 You can check the documents created on Cosmos DB. It is expected to have the following document structure on the `orchestrator` collection:
 
