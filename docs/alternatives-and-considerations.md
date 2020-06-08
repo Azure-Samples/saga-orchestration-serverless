@@ -24,7 +24,7 @@ The solution, in the Cosmos DB perspective, is designed as *collection-per-micro
 
 To address the tradeoff related to the creation of complex queries, the solution is leveraging the [denormalization](https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-model-partition-example#v2-introducing-denormalization-to-optimize-read-queries) approach to optimize read queries by creating an additional collection that consolidates the state results of all Saga participants. This approach drastically reduces complexity and improves performance for **observability** purposes.
 
-![Cosmos DB data model](../img/cosmosdb-data-model.jpg)
+![Cosmos DB data model](./img/cosmosdb-data-model.jpg)
 
 Another approach for data modeling is defining a single collection shared across Saga participants. It will drastically reduce costs, but you will not have the decoupling benefits described above.
 
