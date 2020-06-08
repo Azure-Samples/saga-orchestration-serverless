@@ -1,0 +1,36 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "CosmosDbConnectionString": "AccountEndpoint=https://<database name>.documents.azure.com:443/;AccountKey=<key>",
+    "CosmosDbDatabaseName": "sagadb",
+    "CosmosDbOrchestratorCollectionName": "orchestrator",
+    "CosmosDbValidatorCollectionName": "validator",
+    "CosmosDbTransferCollectionName": "transfer",
+    "CosmosDbReceiptCollectionName": "receipt",
+    "CosmosDbSagaCollectionName": "saga",
+
+    "EventHubsNamespaceConnection": "Endpoint=sb://<namespace name>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key>",
+    "ValidatorEventHubName": "validator",
+    "TransferEventHubName": "transfer",
+    "ReceiptEventHubName": "receipt",
+    "ReplyEventHubName": "saga-reply",
+
+    "EventHubsProducerMaxRetryAttempts": 3,
+    "ActivityMaxRetryAttempts": 3,
+    "ActivityRetryInterval": 5,
+
+    "EventHubsProducerExceptionsAllowedBeforeBreaking": 5,
+    "EventHubsProducerBreakDuration": 10,
+
+    "OrchestratorActivityTimeoutSeconds": 60,
+    "ValidatorTimeoutSeconds": 60,
+    "TransferTimeoutSeconds": 60,
+    "ReceiptTimeoutSeconds": 60,
+
+    "CreateRandomReceiptResult": true,
+    "ReceiptSuccessProbability": 100,
+
+    "AzureWebJobsStorage": "<storage connection string>",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+  }
+}

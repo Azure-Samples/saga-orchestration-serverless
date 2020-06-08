@@ -1,0 +1,30 @@
+{
+  "version": "2.0",
+  "extensions": {
+    "Swashbuckle": {
+      "XmlPath": "Swagger.xml"
+    }
+  },
+  "logging": {
+    "fileLoggingMode": "debugOnly",
+    "logLevel": {
+      "Function.MyFunction": "Information",
+      "default": "None"
+    },
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "maxTelemetryItemsPerSecond": 20,
+        "evaluationInterval": "01:00:00",
+        "initialSamplingPercentage": 100.0,
+        "samplingPercentageIncreaseTimeout": "00:00:01",
+        "samplingPercentageDecreaseTimeout": "00:00:01",
+        "minSamplingPercentage": 0.1,
+        "maxSamplingPercentage": 100.0,
+        "movingAverageRatio": 1.0,
+        "excludedTypes": "Dependency;Event",
+        "includedTypes": "PageView;Trace"
+      }
+    }
+  }
+}

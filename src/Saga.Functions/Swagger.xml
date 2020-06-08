@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Client</name>
+    </assembly>
+    <members>
+        <member name="M:SagaFunctions.Services.SagaStarterService.SagaStarter(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            Start saga
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>        
+          <member name="M:SagaFunctions.Services.SagaStatusCheckerService.StatusChecker(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            Status checker
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
