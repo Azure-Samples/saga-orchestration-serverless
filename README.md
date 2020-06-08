@@ -42,43 +42,12 @@ These other uses cases have similar design patterns:
 
 ![Architecture Overview](./docs/img/architecture-overview.jpg)
 
-### Components
+Check the following sections about the core components of the solution, workflows and design decisions:
 
-* **Saga Client:** A Web API implemented as an [Azure Durable Functions](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=csharp) with [HTTP trigger binding](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp) that receives HTTP requests to start new transactions. For each request, it generates a random transaction ID, starts a new Saga orchestrator instance and provides the transaction ID as part of the HTTP response.
-  
-* **Saga Orchestrator:** Long-running [Durable Orchestrator](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-orchestrations?tabs=csharp) that coordinates the transaction workflow by producing *commands* to Event Hubs and waiting for *events* from Saga participants.
-  
-* **Saga Orchestrator Activity:** [Activity function](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-types-features-overview#activity-functions) with [Cosmos DB binding](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2) that persists the Saga state (*Pending*, *Success* and *Failed*) to Cosmos DB.
-
-* **Command Producer Activity:** [Activity function](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-types-features-overview#activity-functions) with [Event Hubs binding](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-hubs) that produces *commands* created by the orchestration to Event Hubs.
-  
-* **Validator:** Saga participant implemented as an Azure Function with [Event Hubs trigger](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-hubs-trigger?tabs=csharp) and [Cosmos DB binding](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2) that simulates a set of bank accounts validation before proceeding to money transfer between accounts (e.g. checking if both accounts exist, if accounts have sufficient balance, etc.). The resulted event (e.g *InvalidAccountEvent*) is produced on `Saga Reply` Event Hubs and persisted on Cosmos DB.
-
-* **Transfer:** Saga participant implemented as an Azure Functions with [Event Hubs trigger](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-hubs-trigger?tabs=csharp) and [Cosmos DB binding](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2) that simulates credit and debit operations on bank accounts. The resulted state (e.g. *TransferSucceededEvent*) is produced as on `Saga Reply` Event Hubs and persisted on Cosmos DB.
-
-* **Receipt:** Saga participant implemented as an Azure Function with [Event Hubs trigger](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-hubs-trigger?tabs=csharp) and [Cosmos DB binding](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2) that generates a receipt ID for the issuer. The resulted state (e.g. *ReceiptIssuedEvent*) is produced on `Saga Reply` Event Hubs and persisted on Cosmos DB.
-
-* **Saga Event Processor:** [Azure Durable Functions](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=csharp) with [Cosmos DB binding](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb-v2) and [Event Hubs trigger](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-hubs-trigger?tabs=csharp) that consumes all *events* produced by Saga participants, raises [external events](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-external-events?tabs=csharp) for orchestrator instances and persists the events on Cosmos DB.
-
-* **Saga Status Checker:** [Azure Functions HTTP trigger](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp) that provides a schema as part of the HTTP response with the saga status (e.g. *Pending*, *Finished* and *Failed*) and the saga orchestrator runtime status (e.g. *Running* and *Completed*).
-
-### Workflows
-
-Check the [Workflows](./docs/workflows.md) section with detailed information about sucessful and failed workflows covered by the solution.
-  
-### Additional patterns applied
-
-* [Async HTTP APIs](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=csharp#async-http): Designing an API that provides s synchronous HTTP response in the context of Saga is not best approach, as Saga is designed for long-lived transactions (i.e. long-running operations). The Async HTTP API pattern is used to address this problem, where `Saga Client` triggers the long-running action and redirects the client to a status endpoint that allows the client to poll it to know when the transaction is finished.
-
-* [Retry](https://docs.microsoft.com/en-us/azure/architecture/patterns/retry): Pattern used on producing messages to Event Hubs and [activities](https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-types-features-overview#activity-functions) calls from the orchestrator.
-  
-* [Circuit Breaker](https://docs.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker): Pattern integrated with Retry on producing messages to Event Hubs.
-
-* [Database-per-microservice](https://docs.microsoft.com/en-us/dotnet/architecture/cloud-native/database-per-microservice): Pattern used to ensure that each Saga participant manages your own data decoupled from other participants.
-
-### Alternatives & Considerations
-
-Check the [Alternatives & Considerations](./docs/alternatives-and-considerations.md) section to get more information about implementation alternatives, considerations around design decisions and known limitations.
+* [Architecture: Core Components](docs/architecture/components.md)
+* [Architecture: Workflows](./docs/workflows.md)
+* [Architecture: Additional patterns applied](./docs/architecture/additional-patterns.md)
+* [Architecture: Alternatives & Considerations](./docs/architecture/alternatives-and-considerations.md)
 
 ## Maturity Level
 

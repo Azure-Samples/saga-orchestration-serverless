@@ -1,8 +1,8 @@
-# Workflows
+# Architecture: Workflows
 
 ## Successful Workflow
 
-![Successful workflow](./img/workflow-success.jpg)
+![Successful workflow](../img/workflow-success.jpg)
 
 1. User sends an HTTP POST request with the expected payload to `Saga Client` to start a new transaction.
 
@@ -34,7 +34,7 @@
 
 ## Compensation Workflow
 
-![Failed workflow](./img/workflow-fail.jpg)
+![Failed workflow](../img/workflow-fail.jpg)
 
 1. User sends an HTTP POST request with the expected payload to `Saga Client` to start a new transaction.
 
