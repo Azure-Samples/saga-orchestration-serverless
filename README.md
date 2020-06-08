@@ -11,7 +11,8 @@ products:
 description: "Orchestration-based Saga implementation reference in a Serverless architecture on Azure"
 ---
 
-# Orchestration-based Saga on Serverless ![.NET Core](https://github.com/Azure-Samples/saga-orchestration-serverless/workflows/.NET%20Core/badge.svg)
+# Orchestration-based Saga on Serverless 
+![.NET Core](https://github.com/Azure-Samples/saga-orchestration-serverless/workflows/.NET%20Core/badge.svg)
 
 Contoso Bank is building a new payment platform leveraging the development of microservices to rapidly offer new features in the market, where legacy and new applications coexist. Operations are now distributed across applications and databases, and Contoso needs a new architecture and implementation design to ensure data consistency on financial transactions.
 
