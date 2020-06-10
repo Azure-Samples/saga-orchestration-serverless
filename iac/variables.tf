@@ -8,7 +8,6 @@ variable "environment" {
 
 variable "location" {
   description = "The Azure Region in which all resources should be created."
-  default     = "eastus"
 }
 
 variable "partition_count" {
@@ -28,7 +27,6 @@ variable "ehcg" {
 
 variable "failover_location" {
   description = "The Azure Region for CosmosDB failover."
-  default     = "westus"
 }
 
 variable "collections" {
@@ -36,3 +34,13 @@ variable "collections" {
   type        = map(string)
   default     = { "validator" = "id", "receipt" = "transactionId", "orchestrator" = "id", "transfer" = "transactionId", "saga" = "transactionId" }
 }
+
+variable "storage_account_name" {
+  description = "Unique global identifier for an Azure Storage Account"
+}
+
+variable "azure_function_name" {
+  description = "Unique global identifier for an Azure Functions App"
+}
+
+

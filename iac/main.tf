@@ -59,7 +59,7 @@ resource "azurerm_eventhub_consumer_group" "sagalogic-eventhub-cons-grp" {
 }
 
 resource "azurerm_storage_account" "sagalogic-storage-account" {
-  name                     = "${var.prefix}aminesstorage"
+  name                     = "${var.prefix}${var.storage_account_name}"
   resource_group_name      = azurerm_resource_group.sagalogic-resource-group.name
   location                 = azurerm_resource_group.sagalogic-resource-group.location
   account_tier             = "Standard"
@@ -86,7 +86,7 @@ resource "azurerm_app_service_plan" "sagalogic-app-service-plan" {
 }
 
 resource "azurerm_function_app" "sagalogic-function" {
-  name                      = "${var.prefix}-aminesazure-functions"
+  name                      = "${var.prefix}-${var.azurerm_function_app}"
   resource_group_name       = azurerm_resource_group.sagalogic-resource-group.name
   location                  = azurerm_resource_group.sagalogic-resource-group.location
   app_service_plan_id       = azurerm_app_service_plan.sagalogic-app-service-plan.id
