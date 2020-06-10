@@ -3,13 +3,6 @@ This project is implemented using 3 main services in Azure: Functions, Event Hub
 
 The flow is triggered and controlled by an [Github Action](https://help.github.com/es/actions). The action contains a set of tasks that are organized logically in `Continous Integration` (`CI`)- to evaluate the Terraform scripts - and `Continous Development` (`CD`) - to provision the infrastructure on Azure.
 
-| Pipeline name | Tasks  |
-|---|---|
-| infrastructure-ci | <li>init - to initiate the environment and install the dependencies</li><li>fmt - to check the format of the Terraform scripts</li><li>validate - to validate the configuration files</li> |
-| infrastructure-cd | <li>init - to initiate the  environment and install the dependencies</li><li>plan - generate the execution plan for Terraform</li><li>apply - to provision the infrastructure according to the plan</li> |
-
-Note that `infrastructure-cd` is a template to deploy in two environments using the pipelines named `infrastructure-cd` and `infrastructure-cd-dev`.
-
 ## Environment Resources
 
 The infrastructure provisioned by Terraform includes:
@@ -23,11 +16,7 @@ The infrastructure provisioned by Terraform includes:
 
 Repository structure relevant to this document:
 
-| Folder    | Description |
-|---|---|
-| infrastructure | Terraform scripts (`.tf`)|
-| pipelines | Pipeline definitions (`.yml`)| 
-| scripts | shell script (`.sh`) to create the required variables|
+----Put here the order of the files----
 
 Prerequisites:
 
