@@ -48,12 +48,6 @@ ARM_CLIENT_SECRET=
 ```
 
 Some variables are used by Terraform `remote_state`. You can learn more about it [here](https://www.terraform.io/docs/backends/types/azurerm.html)
-
-2. Then run the script:
-```shell
-./scripts/create_variable_groups.sh
-```
-
 ### 2. Review Terraform scripts
 
 There are four Ferraform (`.tf`) scripts to create this environment:
