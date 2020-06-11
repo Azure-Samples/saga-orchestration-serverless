@@ -54,13 +54,6 @@ Some variables are used by Terraform `remote_state`. You can learn more about it
 ./scripts/create_variable_groups.sh
 ```
 
-### 2. Prepare the pipelines
-1. Edit [create_pipeline.sh](scripts/create_pipeline.sh) to include the values such as your Azure Devops `Organization`, `Project` and `Repository`.
-2. Then run the script:
-```shell
-./scripts/create_pipeline.sh
-``` 
-
 ### 2. Review Terraform scripts
 
 There are four Ferraform (`.tf`) scripts to create this environment:
