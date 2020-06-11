@@ -86,7 +86,7 @@ resource "azurerm_app_service_plan" "sagalogic-app-service-plan" {
 }
 
 resource "azurerm_function_app" "sagalogic-function" {
-  name                      = "${var.prefix}-${var.azurerm_function_app}"
+  name                      = "${var.prefix}-${var.azure_function_app}"
   resource_group_name       = azurerm_resource_group.sagalogic-resource-group.name
   location                  = azurerm_resource_group.sagalogic-resource-group.location
   app_service_plan_id       = azurerm_app_service_plan.sagalogic-app-service-plan.id
