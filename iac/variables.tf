@@ -39,7 +39,7 @@ variable "storage_account_name" {
   description = "Unique global identifier for an Azure Storage Account"
 }
 
-variable "azure_function_name" {
+variable "azure_function_app" {
   description = "Unique global identifier for an Azure Functions App"
 }
 
