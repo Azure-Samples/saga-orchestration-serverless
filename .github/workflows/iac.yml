@@ -39,7 +39,7 @@ jobs:
           tf_actions_version: 0.12.24
           tf_actions_subcommand: 'plan'
           tf_actions_working_dir: './iac'
-          args: '-var=client_secret=${{secrets.clientSecret}} -var=sub=${{secrets.subscription}} -var=client_id=${{secrets.clientId}} -var=tenant_id=${{secrets. tenantId}}'
+          args: '-var=client_secret=${{secrets.clientSecret}} -var=sub=${{secrets.subscription}} -var=client_id=${{secrets.clientId}} -var=tenant_id=${{secrets.tenantId}}'
       - name: 'Terraform Apply'
         uses: hashicorp/terraform-github-actions@master
         with:

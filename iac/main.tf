@@ -1,12 +1,3 @@
-provider "azurerm" {
-  version = "= 2.1.0"
-  features {}
-}
-
-provider "random" {
-  version = "~> 2.2"
-}
-
 resource "azurerm_resource_group" "sagalogic-resource-group" {
   name     = "${var.prefix}-resources"
   location = var.location
