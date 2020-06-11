@@ -23,6 +23,7 @@ jobs:
         with:
           tf_actions_version: 0.12.24
           tf_actions_subcommand: 'init'
+          tf_actions_working_dir: './iac'
         env:
           TF_CLI_ARGS_init: '-backend-config="sas_token=${{ secrets.SAS_TOKEN }}"'
       - name: 'Terraform Validate'
