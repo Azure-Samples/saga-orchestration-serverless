@@ -43,7 +43,7 @@ The only scripts that **must** need a change are `terraform.tfvars` as it is use
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/your-subscription-id --sdk-auth
 ```
 
-![Service Principal](/img/servicePrincipal.png)
+![Service Principal](./img/servicePrincipal.png)
 
 You'll need from here the **clientId**, **clientSecret**, **subscriptionId** and **tenantId**
 
@@ -53,7 +53,7 @@ From an already created Azure Storage Account, you'll need access to create a ne
 
 In the portal, got to the Storage account and generate a **Shared access signature**.
 
-![Storage SAS](/img/storage-sas.jpg)
+![Storage SAS](./img/storage-sas.jpg)
 
 Now that you already have these five values it's time to go to Github.
 
@@ -61,10 +61,10 @@ Now that you already have these five values it's time to go to Github.
 
 In the Github Settings tab, create five secrets with the following names.
 
-![Github secrets](/img/github-secrets.jpg)
+![Github secrets](./img/github-secrets.jpg)
 
 After the creation of those secrets you'll need to push changes in the **master branch** making sure the changes are being reflected in the **iac folder** to let the corresponding Github Action be triggered. A succesful result will be demonstrated in the workflow of **TerraformCI/CD** action.
 
-![Github secrets](/img/terraform-action.jpg)
+![Github secrets](./img/terraform-action.jpg)
 
 
