@@ -33,7 +33,7 @@ There are six Terraform (`.tf`) scripts to create this environment:
 | [provider.tf](../iac/provider.tf)| required providers required by Terraform |
 | [terraform.tfvars](../iac/terraform.tfvars)|the file with the required values to create the environment|
 
-The only script that **must** need a change is `terraform.tfvars` as it is used to customize the infrastructure names and some of those names are required to be unique global identifiers.
+The only scripts that **must** need a change are `terraform.tfvars` as it is used to customize the infrastructure names and some of those names are required to be unique global identifiers and `backend.tf` to set the Azure Storage account values for preserving the state.
 
 ### 1. Create the Service Principal
 
