@@ -20,6 +20,21 @@ Prerequisites:
 * A pre existing Azure Storage Account
 * A Service Principal - [Azure doc](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) | [Terraform doc](https://www.terraform.io/docs/providers/azurerm/guides/service_principal_client_secret.html)
 
+## IAC Folder structure
+
+There are six Terraform (`.tf`) scripts to create this environment:
+
+| Script    | Description |
+|---|---|
+| [main.tf](../iac/main.tf) | main file with the environment definition |
+| [variables.tf](../iac/variables.tf) | variables used in the main script | 
+| [backend.tf](../iac/backend.tf) | backend used by Terraform |
+| [version.tf](../iac/version.tf)| minimun Terraform version required |
+| [provider.tf](../iac/provider.tf)| required providers required by Terraform |
+| [terraform.tfvars](../iac/terraform.tfvars)|the file with the required values to create the environment|
+
+The only script that **must** need a change is `terraform.tfvars` as it is used to customize the infrastructure names and some of those names are required to be unique global identifiers.
+
 ### 1. Create the Service Principal
 
 1. By using Azure CLI, in case you need it, you need to create an Azure Service Principal
@@ -30,16 +45,26 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ![Service Principal](/img/servicePrincipal.png)
 
-You'll need from here the **clientId**, **clientSecret**
-### 2. Review Terraform scripts
+You'll need from here the **clientId**, **clientSecret**, **subscriptionId** and **tenantId**
 
-There are four Ferraform (`.tf`) scripts to create this environment:
+### 2. Azure Storage SAS token
 
-| Script    | Description |
-|---|---|
-| [main.tf](infrastructure/main.tf) | main file with the environment definition |
-| [variables.tf](infrastructure/variables.tf) | variables used in the main script | 
-| [backend.tf](infrastructure/backend.tf) | backend used by Terraform |
-| [version.tf](infrastructure/version.tf)| minimun Terraform version required |
+From an already created Azure Storage Account, you'll need access to create a new blob file for Terraform state persistance. To set this account in the **backend.tf** file.
 
-The only script that may need a change is `variables.tf` as it is used to customize the infrastructure names.
+In the portal, got to the Storage account and generate a **Shared access signature**.
+
+![Storage SAS](/img/storage-sas.jpg)
+
+Now that you already have these five values it's time to go to Github.
+
+### 3. Generate Github Secrets
+
+In the Github Settings tab, create five secrets with the following names.
+
+![Github secrets](/img/github-secrets.jpg)
+
+After the creation of those secrets you'll need to push changes in the **master branch** making sure the changes are being reflected in the **iac folder** to let the corresponding Github Action be triggered. A succesful result will be demonstrated in the workflow of **TerraformCI/CD** action.
+
+![Github secrets](/img/terraform-action.jpg)
+
+
