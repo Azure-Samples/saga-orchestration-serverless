@@ -46,7 +46,7 @@ These other uses cases have similar design patterns:
 Check the following sections about the core components of the solution, workflows and design decisions:
 
 * [Architecture: Core Components](docs/architecture/components.md)
-* [Architecture: Workflows](./docs/workflows.md)
+* [Architecture: Workflows](./docs/architecture/workflows.md)
 * [Architecture: Additional patterns applied](./docs/architecture/additional-patterns.md)
 * [Architecture: Alternatives & Considerations](./docs/architecture/alternatives-and-considerations.md)
 
