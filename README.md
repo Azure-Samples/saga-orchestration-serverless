@@ -107,11 +107,15 @@ If [Visual Studio](https://azure.microsoft.com/en-us/downloads/) is your platfor
 
 ## Getting Started
 
-### 1. Creating the application settings
+### 1. Create the infrastructure
+
+Follow the instructions on [Create Infrastructure as Code](docs/infrastructure-as-code.md) to create a new GitHub Actions pipeline that creates the required infrastructure on Azure through Terraform.
+
+### 2. Creating the application settings
 
 The solution requires a set of environment variables to be configured on `Saga.Functions` solution for running the project locally. Follow the [Configuring the Azure Functions Application Settings](./docs/functions-app-settings.md) instructions to create a `local.settings.json`. Make sure the settings are configured before proceeding to the next step.
 
-### 2. Running unit tests
+### 4. Running unit tests
 
 Run the following command on test projects:
 
@@ -119,7 +123,7 @@ Run the following command on test projects:
 dotnet test
 ```
 
-### 3. Running the solution
+### 5. Running the solution
 
 For running the solution through command line, make sure you're on the `src/Saga.Functions` directory then run the following command:
 
