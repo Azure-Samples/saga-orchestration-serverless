@@ -46,7 +46,7 @@ namespace Saga.Orchestration.Factories
         {
             return new CancelTransferCommand
             {
-                Header = BuildEventHeaderFromTransactionId(item.Id, nameof(TransferCommand)),
+                Header = BuildEventHeaderFromTransactionId(item.Id, nameof(CancelTransferCommand)),
                 Content = new CancelTransferCommandContent
                 {
                     Transaction = new TransactionDetails
