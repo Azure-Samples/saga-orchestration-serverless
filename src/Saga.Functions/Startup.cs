@@ -10,6 +10,8 @@ namespace Saga.Functions
         public override void Configure(IFunctionsHostBuilder builder)
         {
             builder.Services.AddHttpClient();
+
+            //adding some changes
         }
     }
 }
